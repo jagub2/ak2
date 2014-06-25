@@ -1,5 +1,6 @@
 #!/bin/bash
-TESTY=($(./program 0.001 1000 0.001 | tail -n 1 | awk 'NF>1{print $NF}')
+TESTY=(
+	$(./program 0.001 1000 0.001 | tail -n 1 | awk 'NF>1{print $NF}')
 	$(echo 0.001 1000 0.001 | ./program | tail -n 1 | awk 'NF>1{print $NF}')
 	$(./program 0.001 1000 100 | tail -n 1 | awk 'NF>1{print $NF}')
 	$(./program 0.001 1000 10 | tail -n 1 | awk 'NF>1{print $NF}')
@@ -20,7 +21,8 @@ WYNIKI=(
 	13.223969
 )
 
-OPISY=("przekazywanie wartosci jako argumenty programu"
+OPISY=(
+	"przekazywanie wartosci jako argumenty programu"
 	"przekazywanie wartosci bezposrednio do programu"
 	"calke 1/x dx 0.001..1000, krok 100"
 	"calke 1/x dx 0.001..1000, krok 10"

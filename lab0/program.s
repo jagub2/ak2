@@ -19,7 +19,7 @@ main:
   mov $tekst, %ecx
   mov $tekst_len, %edx
   int $0x80               # wywolaj funkcje
-  mov %eax, %esp          # wynik (dlugosc tekstu) wrzuc do %esp
+  mov %eax, %edi          # wynik (dlugosc tekstu) wrzuc do %edi
                           # bo %eax zostanie nadpisany
 
   mov $SYSWRITE, %eax     # jak wyzej, ale z funkcja `write`
@@ -28,7 +28,7 @@ main:
   mov $wpisales_len, %edx
   int $0x80
 
-  mov %esp, %edx          # przerzuc %esp do %edx (argument pod tytulem dlugosc)
+  mov %edi, %edx          # przerzuc %edi do %edx (argument pod tytulem dlugosc)
   mov $SYSWRITE, %eax     # dalej jak wyzej, wypisz tekst
   mov $STDOUT, %ebx
   mov $tekst, %ecx
